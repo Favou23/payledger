@@ -49,7 +49,7 @@ alembic upgrade head
 - API: `http://localhost:8000`
 - Swagger: `http://localhost:8000/docs`
 
-## Learning Mode (How We Build So You Understand)
+<!-- ## Learning Mode (How We Build So You Understand)
 Use this checklist every phase:
 1. Read the target service file before running requests.
 2. Predict expected DB changes.
@@ -69,7 +69,7 @@ Use this checklist every phase:
 
 ### After Tests
 - Explain how `conftest.py` isolates test behavior.
-- Explain why `--tb=short` improves test output readability.
+- Explain why `--tb=short` improves test output readability. -->
 
 ## Endpoints
 ### Auth

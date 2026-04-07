@@ -39,8 +39,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         env:
+          PYTHONPATH: ${{ github.workspace }}
           DATABASE_URL: postgresql+asyncpg://payleger:payleger_pass@localhost:5432/payleger_test
           REDIS_URL: redis://localhost:6379/0
           SECRET_KEY: test-secret-key
           ACCESS_TOKEN_EXPIRE_MINUTES: 30
-        run: pytest tests/ -v --tb=short
+        run: python -m pytest tests/ -v --tb=short
