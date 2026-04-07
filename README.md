@@ -1,7 +1,8 @@
 # PayLedger - Wallet and Transaction API
 
 A fintech-grade wallet service built with FastAPI, PostgreSQL, Redis, and async SQLAlchemy.
-*application deployed on AWS*S
+
+=====Application deployed on AWS======
 
 ## What We Are Building
 - JWT-authenticated users with one wallet each
