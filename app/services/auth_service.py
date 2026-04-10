@@ -26,9 +26,9 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def create_access_token(subject: str, expires_delta: timedelta | None = None) -> str:
-    expires = datetime.now(UTC) + (expires_delta or timedelta(minutes=settings.access_token_expire_minutes))
+    expires = datetime.now(UTC) + (expires_delta or timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES))
     payload = {"sub": subject, "exp": expires}
-    return jwt.encode(payload, settings.secret_key, algorithm=settings.algorithm)
+    return jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
 
 async def authenticate_user(db: AsyncSession, email: str, password: str) -> User | None:
@@ -49,7 +49,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: AsyncSession
     )
 
     try:
-        payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         subject = payload.get("sub")
         if subject is None:
             raise credentials_error

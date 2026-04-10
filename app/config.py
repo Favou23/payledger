@@ -1,20 +1,16 @@
 from functools import lru_cache
 
-from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "PayLedger API"
-    app_env: str = "development"
-    database_url: str = Field(
-        default="postgresql+asyncpg://payleger:payleger_pass@localhost:5432/payleger_db",
-        alias="DATABASE_URL",
-    )
-    redis_url: str = Field(default="redis://localhost:6379/0", alias="REDIS_URL")
-    secret_key: str = Field(default="change-me", alias="SECRET_KEY")
-    algorithm: str = "HS256"
-    access_token_expire_minutes: int = Field(default=30, alias="ACCESS_TOKEN_EXPIRE_MINUTES")
+    APP_NAME: str = "PayLedger API"
+    DATABASE_URL: str = "postgresql+asyncpg://payleger:payleger_pass@localhost:5432/payleger_db"
+    REDIS_URL: str = "redis://localhost:6379/0"
+    SECRET_KEY: str = "change-me"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ENVIRONMENT: str = "development"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
